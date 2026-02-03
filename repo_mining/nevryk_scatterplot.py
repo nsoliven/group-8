@@ -4,8 +4,8 @@ from datetime import datetime
 
 import matplotlib.pyplot as plt
 
-INPUT_CSV = "data/file_touches_authors_dates.csv"
-OUTPUT_PNG = "data/nevryk_weeks_vs_files.png"
+INPUT_CSV = "repo_mining/data/nevryk_file_touches_authors_dates.csv"
+OUTPUT_PNG = "repo_mining/data/nevryk_weeks_vs_files.png"
 
 
 def parse_date(value):

@@ -4,8 +4,9 @@ import csv
 
 import os
 
-if not os.path.exists("data"):
- os.makedirs("data")
+DATA_DIR = os.path.join("repo_mining", "data")
+if not os.path.exists(DATA_DIR):
+ os.makedirs(DATA_DIR)
 
 # Only treat these as "source files" for scottyab/rootbeer
 SOURCE_FILE_EXT = (".java", ".kt", ".kts")
@@ -77,7 +78,7 @@ print('Total number of files: ' + str(len(dictfiles)))
 
 file = repo.split('/')[1]
 # change this to the path of your file
-fileOutput = 'data/file_' + file + '.csv'
+fileOutput = os.path.join(DATA_DIR, 'nevryk_file_' + file + '.csv')
 rows = ["Filename", "Touches"]
 fileCSV = open(fileOutput, 'w')
 writer = csv.writer(fileCSV)

@@ -4,8 +4,8 @@ import os
 import requests
 
 REPO = "scottyab/rootbeer"
-SOURCE_FILES_CSV = "data/file_rootbeer.csv"
-OUTPUT_CSV = "data/file_touches_authors_dates.csv"
+SOURCE_FILES_CSV = "repo_mining/data/nevryk_file_rootbeer.csv"
+OUTPUT_CSV = "repo_mining/data/nevryk_file_touches_authors_dates.csv"
 
 
 def github_auth(url, lsttoken, ct):
