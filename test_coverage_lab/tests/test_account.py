@@ -105,10 +105,29 @@ Each test should include:
 # - Create an account and retrieve it using its ID.
 # - Ensure the retrieved account matches the created one.
 
+# ===========================
+# Test: Invalid Email Input
+# Author: Angel V
+# Date: 2026-02-03
+# Description: Ensure invalid email formats are rejected.
+# ===========================
 # TODO 4: Test Invalid Email Handling
 # - Check that invalid emails (e.g., "not-an-email") raise a validation error.
 # - Ensure accounts without an email cannot be created.
+def test_invalid_email_input():
+    invalid_emails = [
+        'plainaddress',
+        'missingatsign.com',
+        'missingdomain@',
+        '@missingusername.com',
+        'user@domain'
+    ]
 
+    for email in invalid_emails:
+        account = Account(name='Test User', email=email, role='user')
+        with pytest.raises(DataValidationError):
+            account.validate_email()
+            
 # TODO Test deleting an account
 # ===========================
 # Test: Delete Account
