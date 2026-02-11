@@ -105,9 +105,44 @@ Each test should include:
 # - Create an account and retrieve it using its ID.
 # - Ensure the retrieved account matches the created one.
 
+# ===========================
+# Test: Invalid Email Input
+# Author: Angel V
+# Date: 2026-02-03
+# Description: Ensure invalid email formats are rejected.
+# ===========================
 # TODO 4: Test Invalid Email Handling
 # - Check that invalid emails (e.g., "not-an-email") raise a validation error.
 # - Ensure accounts without an email cannot be created.
+def test_invalid_email_input():
+    invalid_emails = [
+        'plainaddress',
+        'missingatsign.com',
+        'missingdomain@',
+        '@missingusername.com',
+        'user@domain'
+    ]
+
+    for email in invalid_emails:
+        account = Account(name='Test User', email=email, role='user')
+        with pytest.raises(DataValidationError):
+            account.validate_email()
+            
+# TODO Test deleting an account
+# ===========================
+# Test: Delete Account
+# Author: Angel V
+# Date: 2026-02-08
+# Description: Ensure an account can be deleted from the database.
+# ===========================
+
+def test_delete_account(setup_account):
+    account = setup_account
+    account_id = account.id
+
+    account.delete()                        # deleting the account
+    deleted_account = Account.query.get(account_id)
+    assert deleted_account is None
 
 # TODO 5: Test Password Hashing
 # - Ensure that passwords are stored as **hashed values**.
@@ -165,4 +200,3 @@ def test_valid_withdrawal(setup_account):
 # TODO 11: Test Role-Based Access
 # - Ensure users with different roles ('admin', 'user', 'guest') have appropriate permissions.
 # - Verify that role changes are correctly reflected in the database.
-
