@@ -130,7 +130,9 @@ class TestCounterEndpoints:
         assert response.status_code == HTTPStatus.OK
         assert len(response.get_json()) <= 2  
 
-        # TODO: Add an assertion to ensure the returned counters are sorted correctly
+        data = response.get_json()
+        assert data["b"] == 2
+        assert data["a"] == 1
 
     # ===========================
     # Test: Retrieve top N lowest counters
