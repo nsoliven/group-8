@@ -101,9 +101,26 @@ Each test should include:
 # - Ensure an account’s email can be successfully updated.
 # - Verify that the updated email is stored in the database.
 
-# TODO 3: Test Finding an Account by ID
-# - Create an account and retrieve it using its ID.
-# - Ensure the retrieved account matches the created one.
+
+# ===========================
+# Test: Missing Required Fields
+# Author: Nevryk Soliven
+# Date: 2026-02-16
+# Description: Ensure Account creation fails when required fields are missing.
+# ===========================
+
+def test_missing_required_fields():
+    """Test that creating an account without required fields raises an error"""
+    from sqlalchemy.exc import IntegrityError
+
+    # Try creating account without name and email
+    account = Account()
+    db.session.add(account)
+
+    with pytest.raises(IntegrityError):
+        db.session.commit()
+
+    db.session.rollback()
 
 # ===========================
 # Test: Invalid Email Input
