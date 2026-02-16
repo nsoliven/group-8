@@ -1,2 +1,2 @@
 # group-8
-group repo
+![CI Workflow](https://github.com/nsoliven/group-8/actions/workflows/ci.yml/badge.svg)
