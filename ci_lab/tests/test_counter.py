@@ -279,13 +279,3 @@ class TestCounterEndpoints:
         assert response.status_code == HTTPStatus.BAD_REQUEST
 
         # TODO: Add an assertion to verify the error message specifically says 'Invalid counter name'S
-
-
-    # ===========================
-    # Test: Intentional failure for debugging exercise
-    # Author: Nevryk Soliven
-    # Modification: Ensure the test fails to demonstrate debugging.
-    # ===========================
-    def test_intentional_failure(self, client):
-        """Intentional failure for debugging exercise"""
-        assert 1 == 2
